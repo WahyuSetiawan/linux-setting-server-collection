@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+  nginx-proxy:
+    image: jlesage/nginx-proxy-manager
+    restart: always
+    volumes:
+      - /docker/appdata/nginx-proxy-manager:/config:rw
+    ports:
+      - 80:8181
+      - 8080:8080
+      - 4443:4443
+  portainer:
+    image: portainer/portainer
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /docker/appdata/portainer/data:/data
+    ports:
+      - 8011:8000
+      - 9011:9000
+  gitlab-runner:
+    build: gitlab-runner/
+    container_name: gitlab-runner
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/gitlab-runner/config:/etc/gitlab-runner
+      - /home/gitlab-runner:/home/gitlab-runner:rw
