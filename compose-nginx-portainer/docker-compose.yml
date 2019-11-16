@@ -6,11 +6,10 @@ services:
     container_name: docker-nginx-proxy
     restart: always
     volumes:
-      - /docker/appdata/nginx-proxy-manager:/config:rw
+      - /docker/appdata/nginx-proxy-manager:/config
     ports:
-      - 8181:8181
       - 80:8080
-      - 4443:4443
+      - 443:4443
     networks:
       connection:
   portainer:
@@ -20,9 +19,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /docker/appdata/portainer/data:/data
-    ports:
-      - 8011:8000
-      - 9011:9000
     networks:
       connection:
   gitlab-runner:
