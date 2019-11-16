@@ -3,6 +3,7 @@ version: "2"
 services:
   nginx-proxy:
     image: jlesage/nginx-proxy-manager
+    container_name: docker-nginx-proxy
     restart: always
     volumes:
       - /docker/appdata/nginx-proxy-manager:/config:rw
@@ -14,6 +15,7 @@ services:
       connection:
   portainer:
     image: portainer/portainer
+    container_name: docker-portainer
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -25,7 +27,7 @@ services:
       connection:
   gitlab-runner:
     build: gitlab-runner/
-    container_name: gitlab-runner
+    container_name: docker-gitlab-runner
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
