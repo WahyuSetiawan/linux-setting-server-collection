@@ -35,6 +35,9 @@ Vagrant.configure("2") do |config|
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network "private_network", ip: "192.168.33.99"
+  config.vm.hostname = "www.localhost.com"
+  config.hostsupdater.aliases = ["localhost.com", "www.localhost.com", "penjualan.localhost.com"]
+
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on

@@ -10,6 +10,8 @@ services:
       - 80:8181
       - 8080:8080
       - 4443:4443
+    networks:
+      connetion:
   portainer:
     image: portainer/portainer
     restart: always
@@ -19,6 +21,9 @@ services:
     ports:
       - 8011:8000
       - 9011:9000
+    networks:
+      connection:
+        ipv4_address: 192.168.49.2
   gitlab-runner:
     build: gitlab-runner/
     container_name: gitlab-runner
@@ -27,3 +32,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /srv/gitlab-runner/config:/etc/gitlab-runner
       - /home/gitlab-runner:/home/gitlab-runner:rw
+
+networks:
+  connection:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.49.0/24
+          gateway: 192.168.49.1
+      
