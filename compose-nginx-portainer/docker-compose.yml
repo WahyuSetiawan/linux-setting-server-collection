@@ -8,6 +8,7 @@ services:
     volumes:
       - /docker/appdata/nginx-proxy-manager:/config
     ports:
+      - 8181:8181
       - 80:8080
       - 443:4443
     networks:
