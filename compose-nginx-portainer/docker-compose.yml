@@ -6,7 +6,7 @@ services:
     container_name: docker-nginx-proxy
     restart: always
     volumes:
-      - /docker/appdata/nginx-proxy-manager:/config
+      - /docker/appdata/nginx-proxy:/config
     ports:
       - 8181:8181
       - 80:8080
