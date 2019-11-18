@@ -26,9 +26,6 @@ services:
     build: gitlab-runner/
     container_name: docker-gitlab-runner
     restart: always
-    deploy:
-      mode: replicated
-      replicas: 4
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /publish:/publish
