@@ -17,6 +17,8 @@ services:
     image: portainer/portainer
     container_name: docker-portainer
     restart: always
+    ports:
+      - 9000:9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /docker/appdata/portainer/data:/data
