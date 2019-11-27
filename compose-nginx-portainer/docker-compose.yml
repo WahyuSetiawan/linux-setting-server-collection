@@ -34,6 +34,14 @@ services:
       - /home/server:/home/server
       - /docker/appdata/gitlab-runner/config:/etc/gitlab-runner
       - /home/gitlab-runner:/home/gitlab-runner:rw
+  jenkins: 
+    image: jenkins
+    container_name: docker-jenkins
+    restart: always
+    volumes:
+      - /docker/appdata/jenkins:/var/jenkins_home
+    ports:
+      - 9011:8080
 
 networks:
   connection:
