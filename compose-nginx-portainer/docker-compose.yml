@@ -38,8 +38,8 @@ services:
     image: jenkins
     container_name: docker-jenkins
     restart: always
-    volumes:
-      - /docker/appdata/jenkins:/var/jenkins_home
+    # volumes:
+      # - /docker/appdata/jenkins:/var/jenkins_home
     ports:
       - 9011:8080
     networks:
