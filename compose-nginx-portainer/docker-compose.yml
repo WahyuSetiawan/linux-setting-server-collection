@@ -42,6 +42,8 @@ services:
       - /docker/appdata/jenkins:/var/jenkins_home
     ports:
       - 9011:8080
+    networks:
+      connection:
 
 networks:
   connection:
