@@ -4,7 +4,7 @@ services:
   nginx-proxy:
     image: jlesage/nginx-proxy-manager
     container_name: docker-nginx-proxy
-    restart: always
+    restart: unless-stopped
     volumes:
       - /docker/appdata/nginx-proxy:/config
     ports:
@@ -16,7 +16,7 @@ services:
   portainer:
     image: portainer/portainer
     container_name: docker-portainer
-    restart: always
+    restart: unless-stopped
     ports:
       - 9000:9000
     volumes:
@@ -27,7 +27,7 @@ services:
   gitlab-runner:
     build: gitlab-runner/
     container_name: docker-gitlab-runner
-    restart: always
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/publish:/home/publish
@@ -37,7 +37,7 @@ services:
   jenkins: 
     image: jenkins
     container_name: docker-jenkins
-    restart: always
+    restart: unless-stopped
     volumes:
       - /docker/appdata/jenkins:/var/jenkins_home
     ports:
